@@ -4,7 +4,12 @@
 <script src="/jquery/jquery-1.11.1.min.js"></script>
 <script>
 var c=document.documentElement.clientWidth
-document.write("您设备的独立像素为"+c)
+var b=window.devicePixelRatio
+var a=screen.height
+var h=screen.width
+document.write("您设备的独立像素dips为"+c+"<br>")
+document.write("您设备的物理像素为"+h+","+a+"<br>")
+document.write("您设备的像素比为"+b+"<br>")
 </script>
 </head>
 <body>

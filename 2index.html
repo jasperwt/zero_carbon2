@@ -75,11 +75,22 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 		<script src="js/skel.min.js"></script>
 		<script src="js/init.js"></script>
         <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
         <script>
+            // setTimeout(function(){
+            // // $("#aurorabanner").css("display","none");//将图片的display属性设置为none
+            // }
+            // ,1000);//设置三千毫秒即3秒
+
+            setTimeout(function(){
+            $("#aurorabanner").fadeOut(1500)//将图片的display属性设置为none
+            }
+            ,1000);//设置三千毫秒即3秒
+
         $(document).ready(function(){
             $("#aurorabanner").click(function(){
                 $("#aurorabanner").hide();
@@ -119,16 +130,18 @@
 						<!-- <h2>Design Your Property</h2> -->
                         <br>
                         <br>
+                        <form name="frm" method="get" action="3forever.html">
                         <ul>
-
-                        <li>农业<input  class="input1" value="0" type="number"></li>
-                        <li>科技<input  class="input1" value="0" type="number"></li>
-                        <li>工业<input  class="input1" value="0" type="number"></li>
-                        <li>信念<input  class="input1" value="0" type="number"></li>
+                        <li>农业<input  class="input1" name="agri" value="0" type="number"></li>
+                        <li>科技<input  class="input1" name="tech" value="0" type="number"></li>
+                        <li>工业<input  class="input1" name="indu" value="0" type="number"></li>
+                        <li>信念<input  class="input1" name="beli" value="0" type="number"></li>
                         </ul>
                         <br><br>
-                        <input class="input2" type="submit" value="开始模拟啦" onclick="window.location=('3forever.html')">
-						
+                        <input class="input2" type="submit" value="开始模拟">
+
+                        <!-- <input class="input2" type="submit" value="开始模拟" onclick="window.location=('3.html')"> -->
+						</form>
 						</header>
                     <div id="processheader2">
                         <h2>分配属性</h2>
@@ -144,7 +157,7 @@
 
 				<!-- Footer -->
 					<footer id="footer">
-						<span class="copyright">&copy; Zero-Carbon Team. Design: <a href="http://html5up.net"></a>THU.</span>
+						<span class="copyright">&copy; Zero-Carbon Team. Design: <a href="http://tsinghua.edu.cn"></a>THU.</span>
 					</footer>
 				
 			</div>

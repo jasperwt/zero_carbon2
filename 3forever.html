@@ -11,11 +11,28 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 		<script src="js/skel.min.js"></script>
 		<script src="js/init.js"></script>
         <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
         <script>
+        // 获取先前数据
+        var web=window.location.href
+        if(web.indexOf("=")>-1){
+            var str=window.location.href.split("=")
+        } else{
+            var web="file:///C:/Users/fzcwt/OneDrive/%E9%9B%B6%E7%A2%B3/3forever.html?agri=4&tech=3&indu=3&beli=4"
+            var str=web.split("=")
+        }
+
+        
+        var agri=str[1].split("&")[0]
+        var tech=str[2].split("&")[0]
+        var indu=str[3].split("&")[0]
+        var beli=str[4]
+
+
             var a=0;
             var text=[
             "2021年：泸州发生6级地震","2022年：肯德基指责金拱门的纸质吸管既不方便又不环保","2023年：碳中和思潮从中国传播世界","2025年：土木老哥提桶跑路","2026年：环保究竟是保护自然还是延续人类种群呢？","2030年：梅西40岁退役","2031年：蒙古沙尘暴席卷华北","2033年：中国GDP超美国，但中国并不关心这件事","2036年：无事发生","2041年：深圳成为中国第一个低碳生态城市","2043年：你被骗了，一次性筷子本来就不消耗原木","2045年：福岛核废水还在偷排","2048年：奶茶糖分超标，喝奶茶不要安慰自己减肥","2056年：全球碳交易所成立","2060年：中国宣布碳中和目标达成","2061年：地球又可以看到哈雷彗星！下次在2137年：","2066年：库兹涅兹表示全球经济已进入拐点，之后经济发展越快，环境污染越少","2071年：中国延续保护环境是延续人类生存的理念","2075年：德国绿党赢得大选，绿党首次执政，奉行生态优先原则","2081年：西方政坛绿党成为最主要力量","2083年：“环保究竟是保护自然还是延续人类种群”问题再次被讨论","2090年：大片《环保侠3：英雄归来》全球热播","2093年：十年的环保大讨论得不出统一结果","2094年：环保路线分歧加剧","2100年：新千禧年：到来","2107年：环保路线分歧继续加深","2111年：光棍节成为全球通用节日","2116年：环保路线的分歧要用战争的方式来解决吗？","2119年：游戏《重启地球》横空出世，解决了环保路线分歧，全球和平，并获得诺贝尔环境奖","2121年：地球在你的手中继续向前"
@@ -28,7 +45,9 @@
                 $(".event").append("<p class=eventtext>"+text[a]+"</p>");
                 a=a+1;
                 if (a==text.length){
-                    $("button").before("<div id='banner'>恭喜你<br>你的地球已健康发展100年！</div>")
+                    // $("button").fadeOut(1500)
+                    $("button").removeAttr("onclick")
+                    $("button").before("<a href='index.html'>"+"<div id='banner'>恭喜你<br>你的地球已健康发展100年！"+"</div></a>")
                 
             }
             $("#newmain").scrollTop(80000);
@@ -84,7 +103,7 @@
             #newmain{
                 margin: 5.8em 1.2em;
 
-                height: 500px;
+                height: 65%;
                 overflow-y: scroll;
                 border: 2px hsl(197deg 50% 74%) solid;
                 border-radius: 9px;

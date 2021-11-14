@@ -107,26 +107,39 @@
         });
           </script>
         <script>
-            const isIos = /iphone|ipod|ipad/i.test(navigator.appVersion)
+		
+		if (/Android/gi.test(navigator.userAgent)) {
+    // 检测userAgent是否为Android
+    window.addEventListener('resize', function () {
+      if (document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
+        // 判断当前active的元素是否为input/ textarea
+        window.setTimeout(function () {
+          document.activeElement.scrollIntoViewIfNeeded()
+          // 原生方法，滚动至需要显示的位置
+        }, 0)
+      }
+    })
+  }
+//             const isIos = /iphone|ipod|ipad/i.test(navigator.appVersion)
 
-            // 苹果会自动将 input 滚动到可见视口内
-            if (isIos) return;
+//             // 苹果会自动将 input 滚动到可见视口内
+//             if (isIos) return;
 
-            document.documentElement.addEventListener('focusin', e => {
-            // 只处理 input 元素
-            if (e.target.tagName.toLowerCase() !== 'input') return;
+//             document.documentElement.addEventListener('focusin', e => {
+//             // 只处理 input 元素
+//             if (e.target.tagName.toLowerCase() !== 'input') return;
 
-            // 无法确定输入法的弹窗什么时候会弹出来，这里通过4次循环（共2秒）将 input 滚动到可见视口内
-            const scrollToView = (count) => {
-                if (count >= 4) return clearTimeout(this.__timerId);
+//             // 无法确定输入法的弹窗什么时候会弹出来，这里通过4次循环（共2秒）将 input 滚动到可见视口内
+//             const scrollToView = (count) => {
+//                 if (count >= 4) return clearTimeout(this.__timerId);
 
-                this.__timerId = setTimeout(() => {
-                    this.$refs.bookInputRef.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
-                    scrollToView(count + 1)
-                }, 500)
-                }
+//                 this.__timerId = setTimeout(() => {
+//                     this.$refs.bookInputRef.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+//                     scrollToView(count + 1)
+//                 }, 500)
+//                 }
 
-                scrollToView(0);
+//                 scrollToView(0);
             })
           </script>
 		<noscript>

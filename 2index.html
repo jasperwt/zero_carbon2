@@ -12,25 +12,28 @@
                 padding-top: 15%;
                 font-size: 1.05rem;
             }   
-            .input1{
+            
+            .input1 {
                 outline-style: none;
                 border: 1px solid hsl(198deg 57% 82%);
                 border-radius: 3px;
-                padding: 13px 14px;
+                
                 width: 620px;
                 font-size: 1rem;
                 font-weight: 400 !important;
                 font-family: "Microsoft soft";
                 background: hsl(198deg 49% 43%);
-                width: 120px;
-                /* height: 150px; */
-                padding: 4px 4px;
-                border-width: 0.25rem;
-                border-radius: 15px;
-                margin: 21px;
-                text-align: center;
+                width: 5.5REM;
 
+                padding: 4px 4px;
+                border-width: 0.19rem;
+                border-radius: 15px;
+                margin: 0.5rem;
+                text-align: center;
+                margin-left: 0.8REM;
             }
+
+            
 
             .input2{
                 z-index: 100;
@@ -44,7 +47,7 @@
                 padding: 0.4rem 2.0rem;
                 cursor: pointer;
                 position: absolute;
-                top: 75%;
+                top: 60%;
                 left: 50%;
                 transform: translate(-50%,+50%);
                 border-radius: 17px;
@@ -82,6 +85,38 @@
             body{
                 overflow: scroll;
             }
+            table{
+                margin:0 auto;
+
+            }
+            #processheader2 h3 {
+                font-size: 1rem;
+                font-weight: 400;
+                letter-spacing: 0.1em;
+                line-height: 1em;
+                position: relative;
+                text-align: center;
+                top: 5rem;
+                font-family: 'Source Sans Pro', sans-serif;
+            }
+            #tip{
+                background-color: rgb(0 0 0 / 80%);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                margin-left: 0px;
+                margin-right: 0px;
+                width: 100%;
+                text-align: center;
+                font-size: 22px;
+                padding-top: 30px;
+                padding-bottom: 30px;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+                font-family: 'Source Sans Pro', sans-serif;
+            
+            }
         </style>
 		<title>Restart the Earth</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -101,19 +136,40 @@
             setTimeout(function(){
             $("#aurorabanner").fadeOut(1500)//将图片的display属性设置为none
             }
-            ,1000);//设置三千毫秒即3秒
+            ,1500);//设置三千毫秒即3秒
             
         $(document).ready(function(){
             $("#aurorabanner").click(function(){
                 $("#aurorabanner").hide();
                 });
         });
+
+        function Fade(){
+            $("#tip").hide()
+        }
+        function Fenpei(){
+                
+                var agr=document.getElementsByName("agri")[0].value;
+                var tec=document.getElementsByName("tech")[0].value;
+                var ind=document.getElementsByName("indu")[0].value;
+                var bel=document.getElementsByName("beli")[0].value;
+                if ((agr*1+tec*1+ind*1+bel*1)!=20){
+                    $("input.input2").before("<div id='tip' onclick='Fade()'>您未完全分配点数(20)，请重新分配您的点数</div>")
+                    return false
+                } else{parsein
+                    return true
+
+                }
+                
+                
+        }
+            </script>
           </script>
         <script>
 
 
-    window.addEventListener('resize', function () {
-      if (document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
+              window.addEventListener('resize', function () {
+                if (document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
         // 判断当前active的元素是否为input/ textarea
         window.setTimeout(function () {
           document.activeElement.scrollIntoViewIfNeeded()
@@ -153,13 +209,30 @@
 						<!-- <h2>Design Your Property</h2> -->
                         <br>
                         <br>
-                        <form name="frm" method="get" action="3forever.html">
+                        <form name="frm" method="get" action="3forever.html" onsubmit="return Fenpei()">
                         <ul>
-                        <li>农业<input  class="input1" name="agri" value="0" type="number"></li>
+                        <!-- <li>农业<input  class="input1" name="agri" value="0" type="number"></li>
                         <li>科技<input  class="input1" name="tech" value="0" type="number"></li>
                         <li>工业<input  class="input1" name="indu" value="0" type="number"></li>
-                        <li>信念<input  class="input1" name="beli" value="0" type="number"></li>
+                        <li>信念<input  class="input1" name="beli" value="0" type="number"></li> -->
+                        <table >
+                            
+                            <tr>
+                              <td>农业</td>
+                              <td><input  class="input1" name="agri" value="" type="number"></td>
+                              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;科技</td>
+                              <td><input  class="input1" name="tech" value="" type="number"></td>
+                              
+                            </tr>
+                            <tr>
+                                <td>工业</td>
+                                <td><input  class="input1" name="indu" value="" type="number"></td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信念</td>
+                                <td><input  class="input1" name="beli" value="" type="number"></td>
+                            </tr>
+                          </table>
                         </ul>
+                        
                         <br><br>
                         <input class="input2" type="submit" value="开始模拟">
 
@@ -168,10 +241,11 @@
 						</header>
                     <div id="processheader2">
                         <h2>分配属性</h2>
+                        <h3>您共有可供分配的点数：20</h3>
                     </div>
                     <div id="aurorabanner">
                         <p>您今日节约5g碳</p>
-                        <p>共获得10奥罗拉</p>
+                        <p>共获得20奥罗拉</p>
                     <!-- <button id="hide">隐藏</button>
                     <p>如果你点击“隐藏” 按钮，我将会消失。</p> -->
 
@@ -180,7 +254,7 @@
 
 				<!-- Footer -->
 					<footer id="footer">
-						<span class="copyright">&copy; Zero-Carbon Team. Design: <a href="http://html5up.net"></a>THU.</span>
+						<span class="copyright">&copy; Zero-Carbon Team. Design: <a href="http://tsinghua.edu.cn"></a>THU.</span>
 					</footer>
 				
 			</div>

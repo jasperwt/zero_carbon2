@@ -74,8 +74,8 @@
                 font-family: 'Source Sans Pro', sans-serif;
                 }
             label{
-            display: inline-block;
-            min-width: 100px;/*或者 width: 100px;*/
+                display: inline-block;
+                min-width: 100px;/*或者 width: 100px;*/
             }
             li{
                 font-size: 1.2rem;
@@ -119,6 +119,7 @@
             }
             form{
                 margin: 26% auto;
+                position:relative
             }
         </style>
 		<title>Restart the Earth</title>
@@ -141,14 +142,14 @@
             }
             ,2500);//设置三千毫秒即3秒
             
-        $(document).ready(function(){
+            $(document).ready(function(){
             $("#aurorabanner").click(function(){
                 $("#aurorabanner").hide();
                 });
-        });
+            })
 
         function Fade(){
-            $("#tip").hide()
+            document.getElementById("tip").style.display="none"
         }
         function Fenpei(){
                 
@@ -158,6 +159,7 @@
                 var bel=document.getElementsByName("beli")[0].value;
                 if ((agr*1+tec*1+ind*1+bel*1)!=20){
                     $("input.input2").before("<div id='tip' onclick='Fade()'>您未完全分配点数(20)，请重新分配您的点数</div>")
+                    // $("#tip").hide(3500)
                     return false
                 } else{parsein
                     return true
@@ -208,7 +210,7 @@
                 </div>
 
 					<header id="header">
-
+                        <!-- <div id='tip1' onclick='Fade()'>您未完全分配点数(20)，请重新分配您的点数</div> -->
 						<!-- <h2>Design Your Property</h2> -->
                         <br>
                         <br>
@@ -257,7 +259,7 @@
 
 				<!-- Footer -->
 					<footer id="footer">
-						<span class="copyright">&copy; Zero-Carbon Team. Design: <a href="http://tsinghua.edu.cn"></a>THU.</span>
+						<span class="copyright">&copy; Zero-Carbon Team. Design: <a href="http://www.tsinghua.edu.cn"></a>THU.</span>
 					</footer>
 				
 			</div>
